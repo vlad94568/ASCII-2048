@@ -17,28 +17,33 @@
 
 package org.rowangames.ascii2048
 
+import org.cosplay.CPColor.*
 import org.cosplay.*
-import CPColor.*
-import CPKeyboardKey.*
-import prefabs.images.ani.*
-import prefabs.scenes.*
+import org.cosplay.CPArrayImage.*
 import prefabs.shaders.*
-import CPFIGLetFont.*
+import org.cosplay.CPFIGLetFont.*
+import org.cosplay.CPCanvas.*
+import org.cosplay.CPDim.*
+import CPPixel.*
+import CPKeyboardKey.*
+import prefabs.images.*
+import prefabs.scenes.*
+import org.cosplay.games.pong.shaders.*
 
-val CS = Seq(C_NAVY_BLUE, C_DARK_GREEN, C_STEEL_BLUE13, C_LIGHT_SEA_GREEN, C_SPRING_GREEN4)
+/*
+   _________            ______________
+   __  ____/_______________  __ \__  /_____ _____  __
+   _  /    _  __ \_  ___/_  /_/ /_  /_  __ `/_  / / /
+   / /___  / /_/ /(__  )_  ____/_  / / /_/ /_  /_/ /
+   \____/  \____//____/ /_/     /_/  \__,_/ _\__, /
+                                            /____/
 
+          2D ASCII JVM GAME ENGINE FOR SCALA3
+              (C) 2021 Rowan Games, Inc.
+                ALl rights reserved.
+*/
 
-object Ascii2048:
-    def main(args: Array[String]): Unit =
-        val bgPx = CPPixel('.', C_GRAY2, C_GRAY1) // Background pixel.
-        val dim = CPDim(80, 20) // Dimension for the scenes.
+//val BG_PX = '.'&&(C_GRAY2, C_GRAY1)
 
-        // Initialize the engine.
-        CPEngine.init(CPGameInfo(name = "ASCII 2048", initDim = Option(dim)))
+object Ascii2048Title extends CPScene("title", None, BG_PX):
 
-        try CPEngine.startGame(
-            new CPLogoScene("logo", None, bgPx, CS, "title"),
-        )
-        finally CPEngine.dispose()
-    
-        sys.exit(0)
